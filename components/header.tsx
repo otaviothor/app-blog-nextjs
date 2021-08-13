@@ -1,5 +1,5 @@
-import Link from 'next/link'
-import { BLOG_NAME } from '../lib/constants';
+import Link from "next/link";
+import { BLOG_NAME } from "../lib/constants";
 
 const Header = () => {
   return (
@@ -16,6 +16,6 @@ const Header = () => {
       </Link>
     </h2>
   );
-}
+};
 
-export default Header
+export default Header;

@@ -1,4 +1,4 @@
-import { BLOG_NAME } from '../lib/constants'
+import { BLOG_NAME } from "../lib/constants";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Intro = () => {
@@ -17,6 +17,6 @@ const Intro = () => {
       </h4>
     </section>
   );
-}
+};
 
-export default Intro
+export default Intro;
