@@ -1,5 +1,4 @@
 import { BLOG_NAME } from "../lib/constants";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Intro = () => {
   return (
