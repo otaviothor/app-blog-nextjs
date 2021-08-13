@@ -1,5 +1,5 @@
-import Container from './container'
-import { BLOG_NAME, CONTACT } from '../lib/constants'
+import Container from "./container";
+import { BLOG_NAME, CONTACT } from "../lib/constants";
 
 const Footer = () => {
   return (
@@ -32,6 +32,6 @@ const Footer = () => {
       </Container>
     </footer>
   );
-}
+};
 
-export default Footer
+export default Footer;
