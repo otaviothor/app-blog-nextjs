@@ -10,10 +10,10 @@ import PostTitle from "../../components/post-title";
 import Head from "next/head";
 import { BLOG_NAME } from "../../lib/constants";
 import markdownToHtml from "../../lib/markdownToHtml";
-import { Post } from "../../types/post";
+import { Post as PostType } from "../../types/post";
 
 type Props = {
-  post: Post;
+  post: PostType;
 };
 
 const Post = ({ post }: Props) => {
