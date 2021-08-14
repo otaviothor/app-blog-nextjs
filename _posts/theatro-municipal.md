@@ -1,6 +1,6 @@
 ---
 title: 'Theatro Municipal de São Paulo'
-excerpt: ''
+resume: ''
 coverImage: '/assets/blog/posts/theatro-municipal.jpg'
 date: '2021-07-04T05:35:07.322Z'
 author:

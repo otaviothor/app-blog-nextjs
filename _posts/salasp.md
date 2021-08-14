@@ -1,6 +1,6 @@
 ---
 title: 'Sala São Paulo'
-excerpt: ''
+resume: ''
 coverImage: '/assets/blog/posts/salasp.jpg'
 date: '2021-07-07T05:35:07.322Z'
 author:
