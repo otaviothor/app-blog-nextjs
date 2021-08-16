@@ -1,6 +1,6 @@
 ---
 title: 'Pinacoteca'
-excerpt: ''
+resume: ''
 coverImage: '/assets/blog/posts/pinacoteca.jpg'
 date: '2021-07-15T05:35:07.322Z'
 author:

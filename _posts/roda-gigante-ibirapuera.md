@@ -1,6 +1,6 @@
 ---
 title: 'Roda Gigante no Parque do Ibirapuera'
-excerpt: ''
+resume: ''
 coverImage: '/assets/blog/posts/roda-gigante-ibirapuera.jpg'
 date: '2021-08-16T05:35:07.322Z'
 author:

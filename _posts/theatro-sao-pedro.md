@@ -1,6 +1,6 @@
 ---
 title: 'Theatro São Pedro'
-excerpt: ''
+resume: ''
 coverImage: '/assets/blog/posts/theatro-sao-pedro.jpg'
 date: '2021-07-10T05:35:07.322Z'
 author:

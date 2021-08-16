@@ -1,6 +1,6 @@
 ---
 title: 'Holambra'
-excerpt: ''
+resume: ''
 coverImage: '/assets/blog/posts/holambra.jpg'
 date: '2021-07-22T05:35:07.322Z'
 author:
