@@ -1,4 +1,4 @@
-# ![G&S Logo](public/assets/svg/logo.svg) Go&Share
+# Go&Share
 
 ```bash
 git clone git@github.com:otaviothor/go-and-share.git
