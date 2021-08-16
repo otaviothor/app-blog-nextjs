@@ -7,7 +7,7 @@ const Intro = () => {
         <img
           src="/assets/svg/logo.svg"
           alt={`Logo do ${BLOG_NAME}`}
-          className="sm:w-8 sm:mr-4 md:w-14 md:mr-6 lg:w-20 lg:mr-8"
+          className="w-8 mr-4 md:w-14 md:mr-6 lg:w-20 lg:mr-8"
         />
         {BLOG_NAME}
       </h1>
