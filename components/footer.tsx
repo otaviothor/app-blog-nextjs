@@ -18,14 +18,20 @@ const Footer = () => {
             <a
               href="https://www.instagram.com/_.noemiferrari/"
               target="_blank"
-              className="mx-3 bg-black hover:bg-white hover:text-black border border-black text-white font-bold py-3 px-12 lg:px-8 duration-200 transition-colors mb-6 lg:mb-0"
+              className="mx-3 bg-black hover:bg-white hover:text-black border border-black text-white font-bold py-3 px-12 lg:px-8 duration-200 transition-colors mb-3 lg:mb-0"
             >
               Instagram
             </a>
             <a
+              href={`/about-us`}
+              className="mx-3 my-3 font-bold hover:underline"
+            >
+              Sobre nós
+            </a>
+            <a
               href={`mailto:${CONTACT}`}
               target="_blank"
-              className="mx-3 font-bold hover:underline"
+              className="mx-3 my-3 font-bold hover:underline"
             >
               Contato
             </a>
