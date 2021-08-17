@@ -4,6 +4,8 @@ import Header from "../components/header";
 import Layout from "../components/layout";
 import Head from "next/head";
 import { BLOG_NAME } from "../lib/constants";
+import PostTitle from "../components/post-title";
+import CoverImage from "../components/cover-image";
 
 const AboutUs = () => {
   return (
@@ -13,14 +15,11 @@ const AboutUs = () => {
         <article className="mb-32">
           <Head>
             <title>Sobre nós | {BLOG_NAME}</title>
-            {/* <meta property="og:image" content={post.ogImage.url} /> */}
           </Head>
-          {/* <PostHeader
-            title={post.title}
-            coverImage={post.coverImage}
-            date={post.date}
-            author={post.author}
-          /> */}
+          <PostTitle>Sobre nós</PostTitle>
+          <div className="mb-8 md:mb-16 sm:mx-0 flex justify-center">
+            <CoverImage title={`Página sobre nós`} src={`/assets/blog/content/about-us.jpg`} />
+          </div>
           <PostBody
             content={`
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni
