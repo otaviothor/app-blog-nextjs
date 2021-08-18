@@ -1,40 +1,46 @@
 import fs from "fs";
 import { join } from "path";
 import matter from "gray-matter";
+import { Post } from "../types/post";
+import { Author } from "../types/author";
 
 const postsDirectory = join(process.cwd(), "_data/posts/");
+const authorsDirectory = join(process.cwd(), "_data/authors/");
 
 export function getPostSlugs() {
   return fs.readdirSync(postsDirectory);
 }
 
-export function getPostBySlug(slug: string, fields: string[] = []) {
-  const realSlug = slug.replace(/\.md$/, "");
-  const fullPath = join(postsDirectory, `${realSlug}.md`);
-  const fileContents = fs.readFileSync(fullPath, "utf8");
-  const { data, content } = matter(fileContents);
+export function getAuthorByPost(author: string): Author {
+  const fullPathAuthor = join(authorsDirectory, `${author}.md`);
+  const fileContentsAuthor = fs.readFileSync(fullPathAuthor, "utf8");
+  const { data } = matter(fileContentsAuthor);
+  return {
+    user: data.user,
+    name: data.name,
+    picture: data.picture,
+  };
+}
 
-  type Items = {
-    [key: string]: string;
+export function getPostBySlug(slug: string, fields: string[] = []) {
+  const realSlugPost = slug.replace(/\.md$/, "");
+  const fullPathPost = join(postsDirectory, `${realSlugPost}.md`);
+  const fileContentsPost = fs.readFileSync(fullPathPost, "utf8");
+  const { data, content } = matter(fileContentsPost);
+  const author: Author = getAuthorByPost(data.author);
+
+  const post: Post = {
+    slug,
+    title: data.title,
+    date: data.date,
+    coverImage: data.coverImage,
+    author,
+    resume: data.resume,
+    ogImage: data.ogImage,
+    content
   };
 
-  const items: Items = {};
-
-  // Ensure only the minimal needed data is exposed
-  fields.forEach((field) => {
-    if (field === "slug") {
-      items[field] = realSlug;
-    }
-    if (field === "content") {
-      items[field] = content;
-    }
-
-    if (data[field]) {
-      items[field] = data[field];
-    }
-  });
-
-  return items;
+  return post;
 }
 
 export function getAllPosts(fields: string[] = []) {
@@ -43,5 +49,6 @@ export function getAllPosts(fields: string[] = []) {
     .map((slug) => getPostBySlug(slug, fields))
     // sort posts by date in descending order
     .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
+
   return posts;
 }
