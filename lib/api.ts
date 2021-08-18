@@ -2,7 +2,6 @@ import fs from "fs";
 import { join } from "path";
 import matter from "gray-matter";
 import { Post } from "../types/post";
-import { Author } from "../types/author";
 
 const postsDirectory = join(process.cwd(), "_data/posts/");
 const authorsDirectory = join(process.cwd(), "_data/authors/");
@@ -11,10 +10,10 @@ export function getPostSlugs() {
   return fs.readdirSync(postsDirectory);
 }
 
-export function getAuthorByPost(author: string): Author {
-  const fullPathAuthor = join(authorsDirectory, `${author}.md`);
-  const fileContentsAuthor = fs.readFileSync(fullPathAuthor, "utf8");
-  const { data } = matter(fileContentsAuthor);
+export function getAuthorByPost(author: string) {
+  const fullPath = join(authorsDirectory, `${author}.md`);
+  const fileContents = fs.readFileSync(fullPath, "utf8");
+  const { data } = matter(fileContents);
   return {
     user: data.user,
     name: data.name,
@@ -23,34 +22,33 @@ export function getAuthorByPost(author: string): Author {
 }
 
 export function getPostBySlug(slug: string) {
-  const realSlugPost = slug.replace(/\.md$/, "");
-  const fullPathPost = join(postsDirectory, `${realSlugPost}.md`);
-  const fileContentsPost = fs.readFileSync(fullPathPost, "utf8");
-  const { data, content } = matter(fileContentsPost);
-  const author: Author = getAuthorByPost(data.author);
+  const realSlug = slug.replace(/\.md$/, "");
+  const fullPath = join(postsDirectory, `${realSlug}.md`);
+  const fileContents = fs.readFileSync(fullPath, "utf8");
+  const { data, content } = matter(fileContents);
+  const author = getAuthorByPost(data.author);
 
   const post: Post = {
-    slug,
+    slug: realSlug,
     title: data.title,
     date: data.date,
     coverImage: data.coverImage,
     author,
     resume: data.resume,
     ogImage: data.ogImage,
-    content
+    content,
   };
 
   return post;
 }
 
-export function getAllPosts() {
+export function getAllPosts(limit: number = 0) {
   const slugs = getPostSlugs();
-  console.log(slugs);
-  
+
   const posts = slugs
     .map((slug) => getPostBySlug(slug))
     // sort posts by date in descending order
     .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
 
-  return posts;
+  return limit > 0 ? posts.slice(0, limit) : posts;
 }
