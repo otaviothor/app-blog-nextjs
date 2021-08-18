@@ -22,7 +22,7 @@ export function getAuthorByPost(author: string): Author {
   };
 }
 
-export function getPostBySlug(slug: string, fields: string[] = []) {
+export function getPostBySlug(slug: string) {
   const realSlugPost = slug.replace(/\.md$/, "");
   const fullPathPost = join(postsDirectory, `${realSlugPost}.md`);
   const fileContentsPost = fs.readFileSync(fullPathPost, "utf8");
@@ -43,10 +43,12 @@ export function getPostBySlug(slug: string, fields: string[] = []) {
   return post;
 }
 
-export function getAllPosts(fields: string[] = []) {
+export function getAllPosts() {
   const slugs = getPostSlugs();
+  console.log(slugs);
+  
   const posts = slugs
-    .map((slug) => getPostBySlug(slug, fields))
+    .map((slug) => getPostBySlug(slug))
     // sort posts by date in descending order
     .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
 
