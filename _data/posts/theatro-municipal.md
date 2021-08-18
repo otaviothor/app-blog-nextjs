@@ -3,9 +3,7 @@ title: 'Theatro Municipal de São Paulo'
 resume: ''
 coverImage: '/assets/blog/posts/theatro-municipal.jpg'
 date: '2021-07-04T05:35:07.322Z'
-author:
-  name: Noemi Ferrari
-  picture: '/assets/blog/authors/noemi.jpeg'
+author: 'noemi-ferrari'
 ogImage:
   url: '/assets/blog/posts/theatro-municipal.jpg'
 ---

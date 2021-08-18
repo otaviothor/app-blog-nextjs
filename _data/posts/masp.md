@@ -3,9 +3,7 @@ title: 'Museu de Arte de São Paulo'
 resume: ''
 coverImage: '/assets/blog/posts/masp.jpg'
 date: '2021-08-03T05:35:07.322Z'
-author:
-  name: Noemi Ferrari
-  picture: '/assets/blog/authors/noemi.jpeg'
+author: 'noemi-ferrari'
 ogImage:
   url: '/assets/blog/posts/masp.jpg'
 ---

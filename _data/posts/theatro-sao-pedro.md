@@ -3,9 +3,7 @@ title: 'Theatro São Pedro'
 resume: ''
 coverImage: '/assets/blog/posts/theatro-sao-pedro.jpg'
 date: '2021-07-10T05:35:07.322Z'
-author:
-  name: Noemi Ferrari
-  picture: '/assets/blog/authors/noemi.jpeg'
+author: 'noemi-ferrari'
 ogImage:
   url: '/assets/blog/posts/theatro-sao-pedro.jpg'
 ---

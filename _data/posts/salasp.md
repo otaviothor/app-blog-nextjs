@@ -3,9 +3,7 @@ title: 'Sala São Paulo'
 resume: ''
 coverImage: '/assets/blog/posts/salasp.jpg'
 date: '2021-07-07T05:35:07.322Z'
-author:
-  name: Noemi Ferrari
-  picture: '/assets/blog/authors/noemi.jpeg'
+author: 'noemi-ferrari'
 ogImage:
   url: '/assets/blog/posts/salasp.jpg'
 ---

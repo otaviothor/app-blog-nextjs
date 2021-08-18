@@ -3,9 +3,7 @@ title: 'Holambra'
 resume: ''
 coverImage: '/assets/blog/posts/holambra.jpg'
 date: '2021-07-22T05:35:07.322Z'
-author:
-  name: Noemi Ferrari
-  picture: '/assets/blog/authors/noemi.jpeg'
+author: 'noemi-ferrari'
 ogImage:
   url: '/assets/blog/posts/holambra.jpg'
 ---
