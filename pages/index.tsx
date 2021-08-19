@@ -33,7 +33,9 @@ const Index = ({ allPosts }: Props) => {
               resume={heroPost.resume}
             />
           )}
-          {morePosts.length > 0 && <MorePosts posts={morePosts} />}
+          {morePosts.length > 0 && (
+            <MorePosts title="Mais Postagens" posts={morePosts} />
+          )}
           <div className="text-center mb-16">
             <a href={`/posts`} className="font-bold hover:underline">
               Ver mais
