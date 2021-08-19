@@ -33,7 +33,14 @@ const Index = ({ allPosts }: Props) => {
               resume={heroPost.resume}
             />
           )}
-          {morePosts.length > 0 && <MorePosts posts={morePosts} />}
+          {morePosts.length > 0 && (
+            <MorePosts title="Mais Postagens" posts={morePosts} />
+          )}
+          <div className="text-center mb-16">
+            <a href={`/posts`} className="font-bold hover:underline">
+              Ver mais
+            </a>
+          </div>
         </Container>
       </Layout>
     </>
@@ -43,14 +50,7 @@ const Index = ({ allPosts }: Props) => {
 export default Index;
 
 export const getStaticProps = async () => {
-  const allPosts = getAllPosts([
-    "title",
-    "date",
-    "slug",
-    "author",
-    "coverImage",
-    "resume",
-  ]);
+  const allPosts = getAllPosts(3);
 
   return {
     props: { allPosts },
