@@ -9,5 +9,5 @@ yarn
 
 # depois
 
-yarn next dev
+yarn dev
 ```
