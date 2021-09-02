@@ -6,11 +6,11 @@ import { Post } from "../types/post";
 const postsDirectory = join(process.cwd(), "_data/posts/");
 const authorsDirectory = join(process.cwd(), "_data/authors/");
 
-export function getPostSlugs() {
+export const getPostSlugs = () => {
   return fs.readdirSync(postsDirectory);
-}
+};
 
-export function getAuthorByPost(author: string) {
+export const getAuthorByPost = (author: string) => {
   const fullPath = join(authorsDirectory, `${author}.md`);
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data } = matter(fileContents);
@@ -19,9 +19,9 @@ export function getAuthorByPost(author: string) {
     name: data.name,
     picture: data.picture,
   };
-}
+};
 
-export function getPostBySlug(slug: string) {
+export const getPostBySlug = (slug: string) => {
   const realSlug = slug.replace(/\.md$/, "");
   const fullPath = join(postsDirectory, `${realSlug}.md`);
   const fileContents = fs.readFileSync(fullPath, "utf8");
@@ -40,9 +40,9 @@ export function getPostBySlug(slug: string) {
   };
 
   return post;
-}
+};
 
-export function getAllPosts(limit: number = 0) {
+export const getAllPosts = (limit: number = 0) => {
   const slugs = getPostSlugs();
 
   const posts = slugs
@@ -51,4 +51,5 @@ export function getAllPosts(limit: number = 0) {
     .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
 
   return limit > 0 ? posts.slice(0, limit) : posts;
-}
+};
+
