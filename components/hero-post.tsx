@@ -39,7 +39,7 @@ const HeroPost = ({
         </div>
         <div>
           <p className="text-lg leading-relaxed mb-4">{resume}</p>
-          <Avatar name={author.name} picture={author.picture} />
+          <Avatar author={author} />
         </div>
       </div>
     </section>

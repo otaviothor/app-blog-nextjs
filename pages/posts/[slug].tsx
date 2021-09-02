@@ -64,7 +64,7 @@ type Params = {
   };
 };
 
-export async function getStaticProps({ params }: Params) {
+export const getStaticProps = async ({ params }: Params) => {
   const post = getPostBySlug(params.slug);
   const content = await markdownToHtml(post.content || "");
 
@@ -78,7 +78,7 @@ export async function getStaticProps({ params }: Params) {
   };
 }
 
-export async function getStaticPaths() {
+export const getStaticPaths = async () => {
   const posts = getAllPosts();
 
   return {
