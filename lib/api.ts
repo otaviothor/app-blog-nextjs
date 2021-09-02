@@ -53,3 +53,14 @@ export const getAllPosts = (limit: number = 0) => {
   return limit > 0 ? posts.slice(0, limit) : posts;
 };
 
+export const getPostsByAuthor = (author: string, limit: number = 0) => {
+  const slugs = getPostSlugs();
+
+  const posts = slugs
+    .map((slug) => getPostBySlug(slug))
+    // sort posts by date in descending order
+    .sort((post1, post2) => (post1.date > post2.date ? -1 : 1))
+    .map((post) => post.author.user === author ?? post);
+
+  return limit > 0 ? posts.slice(0, limit) : posts;
+};
