@@ -1,13 +1,12 @@
 # Go&Share - Um blog de quem ama viajar
 
 ```bash
+# clonar o projeto
 git clone git@github.com:otaviothor/go-and-share.git
 
-# depois
-
+# instalar as dependências
 yarn
 
-# depois
-
+# rodar o projeto
 yarn dev
 ```
