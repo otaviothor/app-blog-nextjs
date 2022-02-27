@@ -36,11 +36,13 @@ const Index = ({ allPosts }: Props) => {
           {morePosts.length > 0 && (
             <MorePosts title="Mais Postagens" posts={morePosts} />
           )}
-          <div className="text-center mb-16">
-            <a href={`/posts`} className="font-bold hover:underline">
-              Ver mais
-            </a>
-          </div>
+          {morePosts.length >= 2 && (
+            <div className="text-center mb-16">
+              <a href={`/posts`} className="font-bold hover:underline">
+                Ver mais
+              </a>
+            </div>
+          )}
         </Container>
       </Layout>
     </>
