@@ -1,8 +1,8 @@
-# Go&Share - Um blog de quem ama viajar
+# Blog&Share - Um blog ...
 
 ```bash
 # clonar o projeto
-git clone git@github.com:otaviothor/go-and-share.git
+git clone git@github.com:otaviothor/app-blog-nextjs.git
 
 # instalar as dependências
 yarn
