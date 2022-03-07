@@ -1,8 +1,8 @@
 import fs from "fs";
 import { join } from "path";
 import matter from "gray-matter";
-import { Post } from "../types/post";
-import { Author } from "../types/author";
+import { IPost } from "../interfaces/post";
+import { IAuthor } from "../interfaces/author";
 
 const postsDirectory = join(process.cwd(), "_data/posts/");
 const authorsDirectory = join(process.cwd(), "_data/authors/");
@@ -22,7 +22,7 @@ export const getPostBySlug = (slug: string) => {
   const { data, content } = matter(fileContents);
   const author = getAuthorBySlug(data.author);
 
-  const post: Post = {
+  const post: IPost = {
     slug: realSlug,
     title: data.title,
     date: data.date,
@@ -42,7 +42,7 @@ export const getAuthorBySlug = (slug: string) => {
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data } = matter(fileContents);
 
-  const author: Author = {
+  const author: IAuthor = {
     user: data.user,
     name: data.name,
     picture: data.picture

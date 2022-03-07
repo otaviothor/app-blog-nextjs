@@ -2,16 +2,16 @@ import Avatar from "./avatar";
 import DateFormatter from "./date-formatter";
 import CoverImage from "./cover-image";
 import Link from "next/link";
-import { Author } from "../types/author";
+import { IAuthor } from "../interfaces/author";
 
-type Props = {
+interface IProps {
   title: string;
   coverImage: string;
   date: string;
   resume: string;
-  author: Author;
+  author: IAuthor;
   slug: string;
-};
+}
 
 const PostPreview = ({
   title,
@@ -20,7 +20,7 @@ const PostPreview = ({
   resume,
   author,
   slug,
-}: Props) => {
+}: IProps) => {
   return (
     <div>
       <div className="mb-5">

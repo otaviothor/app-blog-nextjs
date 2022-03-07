@@ -1,11 +1,12 @@
+import { ReactNode } from "react";
 import Footer from "./footer";
 import Meta from "./meta";
 
-type Props = {
-  children: React.ReactNode;
-};
+interface IProps {
+  children: ReactNode;
+}
 
-const Layout = ({ children }: Props) => {
+const Layout = ({ children }: IProps) => {
   return (
     <>
       <Meta />

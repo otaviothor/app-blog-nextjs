@@ -1,11 +1,11 @@
 import { parseISO, format } from "date-fns";
 import { ptBR } from "date-fns/locale";
 
-type Props = {
+interface IProps {
   dateString: string;
-};
+}
 
-const DateFormatter = ({ dateString }: Props) => {
+const DateFormatter = ({ dateString }: IProps) => {
   const date = parseISO(dateString);
   return (
     <time dateTime={dateString}>

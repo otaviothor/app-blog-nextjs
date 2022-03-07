@@ -1,10 +1,10 @@
 import markdownStyles from "../styles/markdown-styles.module.css";
 
-type Props = {
+interface IProps {
   content: string;
-};
+}
 
-const PostBody = ({ content }: Props) => {
+const PostBody = ({ content }: IProps) => {
   return (
     <div className="max-w-2xl mx-auto">
       <div

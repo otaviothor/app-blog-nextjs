@@ -1,13 +1,13 @@
 import cn from "classnames";
 import Link from "next/link";
 
-type Props = {
+interface IProps {
   title: string;
   src: string;
   slug?: string;
-};
+}
 
-const CoverImage = ({ title, src, slug }: Props) => {
+const CoverImage = ({ title, src, slug }: IProps) => {
   const image = (
     <img
       src={src}

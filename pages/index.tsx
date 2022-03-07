@@ -6,46 +6,44 @@ import Layout from "../components/layout";
 import { getAllPosts } from "../lib/api";
 import Head from "next/head";
 import { BLOG_NAME } from "../lib/constants";
-import { Post } from "../types/post";
+import { IPost } from "../interfaces/post";
 
-type Props = {
-  allPosts: Post[];
-};
+interface IProps {
+  allPosts: IPost[];
+}
 
-const Index = ({ allPosts }: Props) => {
+const Index = ({ allPosts }: IProps) => {
   const heroPost = allPosts[0];
   const morePosts = allPosts.slice(1);
   return (
-    <>
-      <Layout>
-        <Head>
-          <title>{BLOG_NAME}</title>
-        </Head>
-        <Container>
-          <Intro />
-          {heroPost && (
-            <HeroPost
-              title={heroPost.title}
-              coverImage={heroPost.coverImage}
-              date={heroPost.date}
-              author={heroPost.author}
-              slug={heroPost.slug}
-              resume={heroPost.resume}
-            />
-          )}
-          {morePosts.length > 0 && (
-            <MorePosts title="Mais Postagens" posts={morePosts} />
-          )}
-          {morePosts.length >= 2 && (
-            <div className="text-center mb-16">
-              <a href={`/posts`} className="font-bold hover:underline">
-                Ver mais
-              </a>
-            </div>
-          )}
-        </Container>
-      </Layout>
-    </>
+    <Layout>
+      <Head>
+        <title>{BLOG_NAME}</title>
+      </Head>
+      <Container>
+        <Intro />
+        {heroPost && (
+          <HeroPost
+            title={heroPost.title}
+            coverImage={heroPost.coverImage}
+            date={heroPost.date}
+            author={heroPost.author}
+            slug={heroPost.slug}
+            resume={heroPost.resume}
+          />
+        )}
+        {morePosts.length > 0 && (
+          <MorePosts title="Mais Postagens" posts={morePosts} />
+        )}
+        {morePosts.length >= 2 && (
+          <div className="text-center mb-16">
+            <a href={`/posts`} className="font-bold hover:underline">
+              Ver mais
+            </a>
+          </div>
+        )}
+      </Container>
+    </Layout>
   );
 };
 

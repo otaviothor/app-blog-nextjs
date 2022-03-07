@@ -10,13 +10,14 @@ import PostTitle from "../../components/post-title";
 import Head from "next/head";
 import { BLOG_NAME } from "../../lib/constants";
 import markdownToHtml from "../../lib/markdownToHtml";
-import { Post as PostType } from "../../types/post";
+import { IPost } from "../../interfaces/post";
+import { IParams } from "../../interfaces/params";
 
-type Props = {
-  post: PostType;
-};
+interface IProps {
+  post: IPost;
+}
 
-const Post = ({ post }: Props) => {
+const Post = ({ post }: IProps) => {
   const router = useRouter();
   if (!router.isFallback && !post?.slug) {
     return (
@@ -34,13 +35,13 @@ const Post = ({ post }: Props) => {
           <PostTitle>Loading…</PostTitle>
         ) : (
           <>
+            <Head>
+              <title>
+                {post.title} | {BLOG_NAME}
+              </title>
+              <meta property="og:image" content={post.ogImage.url} />
+            </Head>
             <article className="mb-32">
-              <Head>
-                <title>
-                  {post.title} | {BLOG_NAME}
-                </title>
-                <meta property="og:image" content={post.ogImage.url} />
-              </Head>
               <PostHeader
                 title={post.title}
                 coverImage={post.coverImage}
@@ -58,13 +59,7 @@ const Post = ({ post }: Props) => {
 
 export default Post;
 
-type Params = {
-  params: {
-    slug: string;
-  };
-};
-
-export const getStaticProps = async ({ params }: Params) => {
+export const getStaticProps = async ({ params }: IParams) => {
   const post = getPostBySlug(params.slug);
   const content = await markdownToHtml(post.content || "");
 
@@ -76,7 +71,7 @@ export const getStaticProps = async ({ params }: Params) => {
       },
     },
   };
-}
+};
 
 export const getStaticPaths = async () => {
   const posts = getAllPosts();
@@ -91,4 +86,4 @@ export const getStaticPaths = async () => {
     }),
     fallback: false,
   };
-}
+};

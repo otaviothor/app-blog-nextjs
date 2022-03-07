@@ -1,10 +1,10 @@
-import { ReactNode, FC } from "react";
+import { ReactNode } from "react";
 
-type Props = {
+interface IProps {
   children?: ReactNode;
-};
+}
 
-const Container: FC = ({ children }: Props) => {
+const Container = ({ children }: IProps) => {
   return <div className="container mx-auto px-5">{children}</div>;
 };
 

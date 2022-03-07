@@ -3,20 +3,25 @@ import ErrorPage from "next/error";
 import Container from "../../components/container";
 import Header from "../../components/header";
 import Layout from "../../components/layout";
-import { getAllAuthors, getAuthorBySlug, getPostsByAuthor } from "../../lib/api";
+import {
+  getAllAuthors,
+  getAuthorBySlug,
+  getPostsByAuthor,
+} from "../../lib/api";
 import Head from "next/head";
 import { BLOG_NAME } from "../../lib/constants";
 import markdownToHtml from "../../lib/markdownToHtml";
-import { Post } from "../../types/post";
-import { Author as AuthorType } from "../../types/author";
+import { IPost } from "../../interfaces/post";
+import { IAuthor } from "../../interfaces/author";
 import MorePosts from "../../components/more-posts";
+import { IParams } from "../../interfaces/params";
 
-type Props = {
-  author: AuthorType;
-  posts: Post[];
-};
+interface IProps {
+  author: IAuthor;
+  posts: IPost[];
+}
 
-const Author = ({ posts, author }: Props) => {
+const Author = ({ posts, author }: IProps) => {
   const router = useRouter();
   if (!router.isFallback && posts.length === 0) {
     return (
@@ -27,36 +32,36 @@ const Author = ({ posts, author }: Props) => {
     );
   }
   return (
-    <>
-      <Layout>
-        <Head>
-          <title>Postagens | {BLOG_NAME}</title>
-        </Head>
-        <Container>
-          <Header />
-          {posts.length > 0 && <MorePosts title={`Postagens de ${author.name.split(' ').slice(0, -1).join(' ')}`} posts={posts} />}
-        </Container>
-      </Layout>
-    </>
+    <Layout>
+      <Head>
+        <title>Postagens | {BLOG_NAME}</title>
+      </Head>
+      <Container>
+        <Header />
+        {posts.length > 0 && (
+          <MorePosts
+            title={`Postagens de ${author.name
+              .split(" ")
+              .slice(0, -1)
+              .join(" ")}`}
+            posts={posts}
+          />
+        )}
+      </Container>
+    </Layout>
   );
 };
 
 export default Author;
 
-type Params = {
-  params: {
-    slug: string;
-  };
-};
-
-export const getStaticProps = async ({ params }: Params) => {
+export const getStaticProps = async ({ params }: IParams) => {
   const author = getAuthorBySlug(params.slug);
   const posts = getPostsByAuthor(author.user);
 
   return {
     props: {
       author,
-      posts
+      posts,
     },
   };
 };

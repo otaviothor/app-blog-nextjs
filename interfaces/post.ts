@@ -1,14 +1,14 @@
-import { Author } from "./author";
+import { IAuthor } from "./author";
 
-export type Post = {
+export interface IPost {
   slug: string;
   title: string;
   date: string;
   coverImage: string;
-  author: Author;
+  author: IAuthor;
   resume: string;
   ogImage: {
     url: string;
   };
   content: string;
-};
+}

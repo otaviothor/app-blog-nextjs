@@ -1,11 +1,11 @@
 import Link from "next/link";
-import { Author } from "../types/author";
+import { IAuthor } from "../interfaces/author";
 
-type Props = {
-  author: Author;
-};
+interface IProps {
+  author: IAuthor;
+}
 
-const Avatar = ({ author }: Props) => {
+const Avatar = ({ author }: IProps) => {
   return (
     <Link as={`/authors/${author.user}`} href="/authors/[slug]">
       <a className="hover:underline flex items-center">

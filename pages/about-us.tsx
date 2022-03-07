@@ -10,15 +10,18 @@ import CoverImage from "../components/cover-image";
 const AboutUs = () => {
   return (
     <Layout>
+      <Head>
+        <title>Sobre nós | {BLOG_NAME}</title>
+      </Head>
       <Container>
         <Header />
         <article className="mb-32">
-          <Head>
-            <title>Sobre nós | {BLOG_NAME}</title>
-          </Head>
           <PostTitle>Sobre nós</PostTitle>
           <div className="mb-8 md:mb-16 sm:mx-0 flex justify-center">
-            <CoverImage title={`Página sobre nós`} src={`/assets/blog/content/about-us.jpg`} />
+            <CoverImage
+              title={`Página sobre nós`}
+              src={`/assets/blog/content/about-us.jpg`}
+            />
           </div>
           <PostBody
             content={`
@@ -35,46 +38,3 @@ const AboutUs = () => {
 };
 
 export default AboutUs;
-
-// type Params = {
-//   params: {
-//     slug: string;
-//   };
-// };
-
-// export async function getStaticProps({ params }: Params) {
-//   const post = getPostBySlug(params.slug, [
-//     "title",
-//     "date",
-//     "slug",
-//     "author",
-//     "content",
-//     "ogImage",
-//     "coverImage",
-//   ]);
-//   const content = await markdownToHtml(post.content || "");
-
-//   return {
-//     props: {
-//       post: {
-//         ...post,
-//         content,
-//       },
-//     },
-//   };
-// }
-
-// export async function getStaticPaths() {
-//   const posts = getAllPosts(["slug"]);
-
-//   return {
-//     paths: posts.map((post) => {
-//       return {
-//         params: {
-//           slug: post.slug,
-//         },
-//       };
-//     }),
-//     fallback: false,
-//   };
-// }

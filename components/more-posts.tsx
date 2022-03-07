@@ -1,12 +1,12 @@
 import PostPreview from "./post-preview";
-import { Post } from "../types/post";
+import { IPost } from "../interfaces/post";
 
-type Props = {
+interface IProps {
   title?: string;
-  posts: Post[];
-};
+  posts: IPost[];
+}
 
-const MorePosts = ({ posts, title }: Props) => {
+const MorePosts = ({ posts, title }: IProps) => {
   return (
     <section>
       {title && (

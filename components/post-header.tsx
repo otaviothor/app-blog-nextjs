@@ -2,16 +2,16 @@ import Avatar from "./avatar";
 import DateFormatter from "./date-formatter";
 import CoverImage from "./cover-image";
 import PostTitle from "./post-title";
-import { Author } from "../types/author";
+import { IAuthor } from "../interfaces/author";
 
-type Props = {
+interface IProps {
   title: string;
   coverImage: string;
   date: string;
-  author: Author;
-};
+  author: IAuthor;
+}
 
-const PostHeader = ({ title, coverImage, date, author }: Props) => {
+const PostHeader = ({ title, coverImage, date, author }: IProps) => {
   return (
     <>
       <PostTitle>{title}</PostTitle>
