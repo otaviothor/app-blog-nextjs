@@ -3,14 +3,8 @@ import ErrorPage from "next/error";
 import Container from "../../components/container";
 import Header from "../../components/header";
 import Layout from "../../components/layout";
-import {
-  getAllAuthors,
-  getAuthorBySlug,
-  getPostsByAuthor,
-} from "../../lib/api";
 import Head from "next/head";
-import { BLOG_NAME } from "../../lib/constants";
-import markdownToHtml from "../../lib/markdownToHtml";
+import { API_HOST, BLOG_NAME } from "../../lib/constants";
 import { IPost } from "../../interfaces/post";
 import { IAuthor } from "../../interfaces/author";
 import MorePosts from "../../components/more-posts";
@@ -55,8 +49,12 @@ const Author = ({ posts, author }: IProps) => {
 export default Author;
 
 export const getStaticProps = async ({ params }: IParams) => {
-  const author = getAuthorBySlug(params.slug);
-  const posts = getPostsByAuthor(author.user);
+  const author = await fetch(
+    `${API_HOST}/authors/slug/${params.slug}`
+  ).then<IAuthor>((res) => res.json());
+  const posts = await fetch(`${API_HOST}/posts/author/${author.user}`).then<
+    IPost[]
+  >((res) => res.json());
 
   return {
     props: {
@@ -67,7 +65,9 @@ export const getStaticProps = async ({ params }: IParams) => {
 };
 
 export const getStaticPaths = async () => {
-  const authors = getAllAuthors();
+  const authors = await fetch(`${API_HOST}/authors`).then<IAuthor[]>((res) =>
+    res.json()
+  );
 
   return {
     paths: authors.map((author) => {

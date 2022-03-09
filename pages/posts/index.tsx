@@ -3,15 +3,15 @@ import MorePosts from "../../components/more-posts";
 import Layout from "../../components/layout";
 import { getAllPosts } from "../../lib/api";
 import Head from "next/head";
-import { BLOG_NAME } from "../../lib/constants";
+import { API_HOST, BLOG_NAME } from "../../lib/constants";
 import { IPost } from "../../interfaces/post";
 import Header from "../../components/header";
 
 interface IProps {
-  allPosts: IPost[];
+  posts: IPost[];
 }
 
-const Posts = ({ allPosts }: IProps) => {
+const Posts = ({ posts }: IProps) => {
   return (
     <>
       <Layout>
@@ -20,9 +20,7 @@ const Posts = ({ allPosts }: IProps) => {
         </Head>
         <Container>
           <Header />
-          {allPosts.length > 0 && (
-            <MorePosts title="Postagens" posts={allPosts} />
-          )}
+          {posts.length > 0 && <MorePosts title="Postagens" posts={posts} />}
         </Container>
       </Layout>
     </>
@@ -32,9 +30,11 @@ const Posts = ({ allPosts }: IProps) => {
 export default Posts;
 
 export const getStaticProps = async () => {
-  const allPosts = getAllPosts();
+  const posts = await fetch(`${API_HOST}/posts`).then<IPost[]>((res) =>
+    res.json()
+  );
 
   return {
-    props: { allPosts },
+    props: { posts },
   };
 };

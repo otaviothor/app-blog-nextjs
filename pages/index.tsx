@@ -3,18 +3,17 @@ import MorePosts from "../components/more-posts";
 import HeroPost from "../components/hero-post";
 import Intro from "../components/intro";
 import Layout from "../components/layout";
-import { getAllPosts } from "../lib/api";
 import Head from "next/head";
-import { BLOG_NAME } from "../lib/constants";
+import { API_HOST, BLOG_NAME } from "../lib/constants";
 import { IPost } from "../interfaces/post";
 
 interface IProps {
-  allPosts: IPost[];
+  posts: IPost[];
 }
 
-const Index = ({ allPosts }: IProps) => {
-  const heroPost = allPosts[0];
-  const morePosts = allPosts.slice(1);
+const Index = ({ posts }: IProps) => {
+  const heroPost = posts[0];
+  const morePosts = posts.slice(1);
   return (
     <Layout>
       <Head>
@@ -50,9 +49,9 @@ const Index = ({ allPosts }: IProps) => {
 export default Index;
 
 export const getStaticProps = async () => {
-  const allPosts = getAllPosts(3);
+  const posts = await fetch(`${API_HOST}/posts`).then<IPost[]>((res) => res.json());
 
   return {
-    props: { allPosts },
+    props: { posts },
   };
 };
