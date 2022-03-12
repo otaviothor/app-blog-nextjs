@@ -1,6 +1,6 @@
 ---
 title: "Lorem ipsum"
-resume: ""
+resume: "Lorem, ipsum dolor sit amet consectetur adipisicing elit"
 coverImage: "/assets/blog/posts/lorem-ipsum.jpg"
 date: "2022-02-26T12:00:00.000Z"
 author: "otavio-silva"

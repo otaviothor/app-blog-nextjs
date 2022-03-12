@@ -49,7 +49,7 @@ const Index = ({ posts }: IProps) => {
 export default Index;
 
 export const getStaticProps = async () => {
-  const posts = await fetch(`${API_HOST}/posts`).then<IPost[]>((res) => res.json());
+  const posts = await fetch(`${API_HOST}/posts?limit=${5}`).then<IPost[]>((res) => res.json());
 
   return {
     props: { posts },

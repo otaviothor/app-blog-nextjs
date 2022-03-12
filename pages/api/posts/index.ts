@@ -6,9 +6,10 @@ import { catcher, method } from "../../../lib/helpers";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const handleCase: IResponseMethods = {
-    GET: (_, res: NextApiResponse<IPost[]>): void => {
+    GET: (req: NextApiRequest, res: NextApiResponse<IPost[]>): void => {
       try {
-        res.status(200).json(getPosts());
+        const { limit = 0 } = req.query;
+        res.status(200).json(getPosts(Number(limit)));
       } catch (error) {
         catcher(res, error);
       }
