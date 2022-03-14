@@ -5,13 +5,13 @@ import PostBody from "../../components/post-body";
 import Header from "../../components/header";
 import PostHeader from "../../components/post-header";
 import Layout from "../../components/layout";
-import { getPostBySlug, getAllPosts } from "../../lib/api";
 import PostTitle from "../../components/post-title";
 import Head from "next/head";
 import { API_HOST, BLOG_NAME } from "../../lib/constants";
 import markdownToHtml from "../../lib/markdownToHtml";
 import { IPost } from "../../interfaces/post";
 import { IParams } from "../../interfaces/params";
+import api from "../../lib/api";
 
 interface IProps {
   post: IPost;
@@ -60,9 +60,9 @@ const Post = ({ post }: IProps) => {
 export default Post;
 
 export const getStaticProps = async ({ params }: IParams) => {
-  const post = await fetch(`${API_HOST}/posts/slug/${params.slug}`).then<IPost>(
-    (res) => res.json()
-  );
+  const post = await api
+    .get<IPost>(`${API_HOST}/posts/slug/${params.slug}`)
+    .then((res) => res.data);
   const content = await markdownToHtml(post.content || "");
 
   return {
@@ -76,7 +76,9 @@ export const getStaticProps = async ({ params }: IParams) => {
 };
 
 export const getStaticPaths = async () => {
-  const posts = await fetch(`${API_HOST}/posts`).then<IPost[]>((res) => res.json());
+  const posts = await api
+    .get<IPost[]>(`${API_HOST}/posts`)
+    .then((res) => res.data);
 
   return {
     paths: posts.map((post) => {

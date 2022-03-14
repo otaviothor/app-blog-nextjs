@@ -9,6 +9,7 @@ import { IPost } from "../../interfaces/post";
 import { IAuthor } from "../../interfaces/author";
 import MorePosts from "../../components/more-posts";
 import { IParams } from "../../interfaces/params";
+import api from "../../lib/api";
 
 interface IProps {
   author: IAuthor;
@@ -49,12 +50,12 @@ const Author = ({ posts, author }: IProps) => {
 export default Author;
 
 export const getStaticProps = async ({ params }: IParams) => {
-  const author = await fetch(
-    `${API_HOST}/authors/slug/${params.slug}`
-  ).then<IAuthor>((res) => res.json());
-  const posts = await fetch(`${API_HOST}/posts/author/${author.user}`).then<
-    IPost[]
-  >((res) => res.json());
+  const author = await api
+    .get<IAuthor>(`${API_HOST}/authors/slug/${params.slug}`)
+    .then((res) => res.data);
+  const posts = await api
+    .get<IPost[]>(`${API_HOST}/posts/author/${author.user}`)
+    .then((res) => res.data);
 
   return {
     props: {
@@ -65,9 +66,9 @@ export const getStaticProps = async ({ params }: IParams) => {
 };
 
 export const getStaticPaths = async () => {
-  const authors = await fetch(`${API_HOST}/authors`).then<IAuthor[]>((res) =>
-    res.json()
-  );
+  const authors = await api
+    .get<IAuthor[]>(`${API_HOST}/authors`)
+    .then((res) => res.data);
 
   return {
     paths: authors.map((author) => {

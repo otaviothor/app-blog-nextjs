@@ -6,6 +6,7 @@ import Layout from "../components/layout";
 import Head from "next/head";
 import { API_HOST, BLOG_NAME } from "../lib/constants";
 import { IPost } from "../interfaces/post";
+import api from "../lib/api";
 
 interface IProps {
   posts: IPost[];
@@ -49,7 +50,9 @@ const Index = ({ posts }: IProps) => {
 export default Index;
 
 export const getStaticProps = async () => {
-  const posts = await fetch(`${API_HOST}/posts?limit=${5}`).then<IPost[]>((res) => res.json());
+  const posts = await api
+    .get<IPost[]>(`${API_HOST}/posts?limit=${5}`)
+    .then((res) => res.data);
 
   return {
     props: { posts },
