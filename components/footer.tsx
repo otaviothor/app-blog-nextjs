@@ -5,12 +5,12 @@ const Footer = () => {
   return (
     <footer className="bg-accent-1 border-t border-accent-2">
       <Container>
-        <div className="py-28 flex flex-col lg:flex-row items-center">
-          <h3 className="text-4xl lg:text-5xl font-bold tracking-tighter leading-tight text-center lg:text-left mb-10 lg:mb-0 lg:pr-4 lg:w-1/2 flex items-center">
+        <div className="py-10 flex flex-col lg:flex-row items-center">
+          <h3 className="text-3xl font-bold tracking-tighter leading-tight text-center lg:text-left mb-10 lg:mb-0 lg:pr-4 lg:w-1/2 flex items-center">
             <img
               src="/assets/svg/logo.svg"
               alt={`Logo do ${BLOG_NAME}`}
-              className="w-10 mr-4"
+              className="w-8 mr-4"
             />
             {BLOG_NAME}
           </h3>
