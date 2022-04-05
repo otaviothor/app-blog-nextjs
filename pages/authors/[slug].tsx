@@ -29,7 +29,9 @@ const Author = ({ posts, author }: IProps) => {
   return (
     <Layout>
       <Head>
-        <title>Postagens | {BLOG_NAME}</title>
+        <title>
+          {author.name.split(" ").slice(0, -1).join(" ")} | {BLOG_NAME}
+        </title>
       </Head>
       <Container>
         <Header />
