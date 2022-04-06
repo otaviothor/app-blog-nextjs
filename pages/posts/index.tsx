@@ -2,10 +2,10 @@ import Container from "../../components/container";
 import MorePosts from "../../components/more-posts";
 import Layout from "../../components/layout";
 import Head from "next/head";
-import { API_HOST, BLOG_NAME } from "../../lib/constants";
+import { BLOG_NAME } from "../../lib/constants";
 import { IPost } from "../../interfaces/post";
 import Header from "../../components/header";
-import api from "../../lib/api";
+import { getPosts } from "../../controllers/postsController";
 
 interface IProps {
   posts: IPost[];
@@ -29,10 +29,8 @@ const Posts = ({ posts }: IProps) => {
 
 export default Posts;
 
-export const getStaticProps = async () => {
-  const posts = await api
-    .get<IPost[]>(`${API_HOST}/posts`)
-    .then((res) => res.data);
+export const getStaticProps = () => {
+  const posts = getPosts();
 
   return {
     props: { posts },

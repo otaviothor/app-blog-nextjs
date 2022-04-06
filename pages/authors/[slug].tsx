@@ -4,12 +4,16 @@ import Container from "../../components/container";
 import Header from "../../components/header";
 import Layout from "../../components/layout";
 import Head from "next/head";
-import { API_HOST, BLOG_NAME } from "../../lib/constants";
+import { BLOG_NAME } from "../../lib/constants";
 import { IPost } from "../../interfaces/post";
 import { IAuthor } from "../../interfaces/author";
 import MorePosts from "../../components/more-posts";
 import { IParams } from "../../interfaces/params";
-import api from "../../lib/api";
+import {
+  getAuthorBySlug,
+  getAuthors,
+} from "../../controllers/authorsController";
+import { getPostsByAuthor } from "../../controllers/postsController";
 
 interface IProps {
   author: IAuthor;
@@ -51,13 +55,9 @@ const Author = ({ posts, author }: IProps) => {
 
 export default Author;
 
-export const getStaticProps = async ({ params }: IParams) => {
-  const author = await api
-    .get<IAuthor>(`${API_HOST}/authors/slug/${params.slug}`)
-    .then((res) => res.data);
-  const posts = await api
-    .get<IPost[]>(`${API_HOST}/posts/author/${author.user}`)
-    .then((res) => res.data);
+export const getStaticProps = ({ params }: IParams) => {
+  const author = getAuthorBySlug(params.slug);
+  const posts = getPostsByAuthor(author.user);
 
   return {
     props: {
@@ -67,10 +67,8 @@ export const getStaticProps = async ({ params }: IParams) => {
   };
 };
 
-export const getStaticPaths = async () => {
-  const authors = await api
-    .get<IAuthor[]>(`${API_HOST}/authors`)
-    .then((res) => res.data);
+export const getStaticPaths = () => {
+  const authors = getAuthors();
 
   return {
     paths: authors.map((author) => {

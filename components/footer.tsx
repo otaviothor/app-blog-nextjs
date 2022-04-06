@@ -23,7 +23,7 @@ const Footer = () => {
               Instagram
             </a>
             <a
-              href={`/sobre-nos`}
+              href={`/about-us`}
               className="mx-3 my-3 font-bold hover:underline"
             >
               Sobre nós
