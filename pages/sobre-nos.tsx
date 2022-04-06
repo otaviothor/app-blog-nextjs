@@ -20,7 +20,7 @@ const AboutUs = () => {
           <div className="mb-8 md:mb-16 sm:mx-0 flex justify-center">
             <CoverImage
               title={`Página sobre nós`}
-              src={`/assets/blog/content/about-us.jpg`}
+              src={`/assets/blog/content/sobre-nos.jpg`}
             />
           </div>
           <PostBody
