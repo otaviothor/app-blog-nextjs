@@ -12,7 +12,7 @@ const Intro = () => {
         {BLOG_NAME}
       </h1>
       <h4 className="text-center md:text-left text-lg mt-5 md:pl-8">
-        Anime(se) no dia a dia
+        Lorem ipsum dolor
       </h4>
     </section>
   );

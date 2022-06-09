@@ -38,7 +38,7 @@ const Index = ({ posts }: IProps) => {
         {morePosts.length >= 2 && (
           <div className="text-center mb-16">
             <a href={`/posts`} className="font-bold hover:underline">
-              Ver mais
+              ver mais
             </a>
           </div>
         )}

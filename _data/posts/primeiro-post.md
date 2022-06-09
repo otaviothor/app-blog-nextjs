@@ -1,15 +1,13 @@
 ---
-title: "Meu primeiro post num blog de anime"
+title: "Meu primeiro post"
 resume: ""
-coverImage: "/assets/blog/posts/primeiro-post.jpg"
+coverImage: "https://picsum.photos/1200/600"
 date: "2022-04-05T12:00:00.000Z"
-author: "nicole-santana"
+author: "otavio-silva"
 ogImage:
-  url: "/assets/blog/posts/primeiro-post.jpg"
+  url: "https://picsum.photos/1200/600"
 ---
 
-Esse é o meu primeiro post num blog de anime. Esse blog irá servir para expressar o meu gosto por esse tipo de conteúdo e também incentivar para que mais pessoas possam consumir animes no Brasil, assim, difundindo ainda mais essa categoria de animação. 
+Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illum, minima nostrum adipisci facilis eligendi explicabo commodi culpa maxime itaque dolorem ea dicta laborum maiores repellat praesentium, provident voluptate incidunt cupiditate.
 
-Até breve.
-
-<p align="center"><img src="/assets/blog/content/saudacao.jpg" width="400"></p>
+<p align="center"><img src="https://picsum.photos/400" width="400"></p>
